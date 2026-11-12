@@ -3,265 +3,262 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nordlicht Studio – Design und Web</title>
-<meta name="description" content="Nordlicht Studio gestaltet Marken, Websites und digitale Produkte.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Forgeline – Training mit System</title>
+<meta name="description" content="Forgeline: Coach, Trainingspläne, Challenges, Streaks und Tracking für über 18 Sportarten.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ===== 1. FARBEN UND SCHRIFTEN: hier kannst du das Aussehen ändern ===== */
-:root{
-  --bg:#0d1519;          /* Hintergrund */
-  --surface:#15222a;     /* Karten */
-  --line:#24363f;        /* Linien */
-  --text:#e8e4d9;        /* Text */
-  --muted:#93a5ac;       /* Zweittext */
-  --mint:#7fd8c4;        /* Akzent 1 */
-  --violet:#a68bff;      /* Akzent 2 */
-  --amber:#f0b27a;       /* Akzent 3 */
-  --serif:"Fraunces",Georgia,serif;
-  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-}
+:root{--bg:#0b0f14;--s:#131a22;--s2:#182029;--l:#243140;--t:#e7eaed;--m:#8b98a5;--ice:#8fd3ff;--em:#ff6b3d;--h:"Barlow Condensed","Arial Narrow",sans-serif;--b:"Barlow",system-ui,sans-serif;color-scheme:dark}
 *{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{background:var(--bg);color:var(--text);font:400 1.05rem/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px}
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;letter-spacing:-.01em}
-h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1rem}
-p{max-width:62ch}
-section{padding:clamp(4.5rem,10vw,8rem) 1.5rem}
-.wrap{max-width:1080px;margin:0 auto}
-.lead{color:var(--muted);font-size:1.15rem;margin-bottom:2.5rem}
-
-/* ===== 2. NAVIGATION ===== */
-header{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-header.scrolled{background:rgba(13,21,25,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
-nav{max-width:1080px;margin:0 auto;height:68px;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--serif);font-weight:600;font-size:1.3rem;text-decoration:none}
-.links{display:flex;gap:.4rem;list-style:none;padding:0}
-.links a{display:block;padding:.5rem .9rem;border-radius:99px;text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s,background .2s}
-.links a:hover,.links a.active{color:var(--text);background:rgba(255,255,255,.07)}
-.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:12px;cursor:pointer;font-size:1.2rem}
-@media(max-width:760px){
-  .burger{display:block}
-  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:.5rem 1.5rem 1.2rem;gap:0;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.3s}
-  .links.open{transform:none;opacity:1;pointer-events:auto}
-  .links a{padding:.9rem .2rem;border-radius:0}
-}
-
-/* ===== 3. START (Hero mit Nordlicht) ===== */
-#start{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:7rem}
-.aurora{position:absolute;inset:0;z-index:0;pointer-events:none}
-.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;will-change:transform}
-.b1{width:46vmax;height:30vmax;background:var(--mint);top:-8%;left:-10%;animation:drift1 16s ease-in-out infinite alternate}
-.b2{width:38vmax;height:28vmax;background:var(--violet);top:12%;right:-14%;opacity:.42;animation:drift2 20s ease-in-out infinite alternate}
-.b3{width:30vmax;height:20vmax;background:var(--amber);bottom:-12%;left:30%;opacity:.22;animation:drift1 24s ease-in-out infinite alternate-reverse}
-.aurora::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,21,25,.25),var(--bg) 96%)}
-@keyframes drift1{to{translate:8vw 6vh;scale:1.15}}
-@keyframes drift2{to{translate:-9vw 8vh;scale:.9}}
-.hero{position:relative;z-index:1}
-.hero h1{font-size:clamp(2.8rem,9vw,6.4rem);max-width:14ch;margin-bottom:1.5rem}
-.hero p{font-size:1.2rem;color:#c3cdd0;margin-bottom:2.2rem}
-.hero>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
-.hero>*:nth-child(2){animation-delay:.12s}.hero>*:nth-child(3){animation-delay:.24s}
-@keyframes rise{from{opacity:0;translate:0 24px}}
-.btns{display:flex;flex-wrap:wrap;gap:.8rem}
-.btn{font:700 1rem var(--sans);padding:.95rem 1.7rem;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;text-decoration:none;transition:transform .2s,background .2s,border-color .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);border-color:var(--mint)}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--t);font:400 1rem/1.6 var(--b);overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:var(--h);font-weight:700;line-height:1;letter-spacing:.01em}
+h2{font-size:clamp(2.2rem,6vw,3.6rem);margin-bottom:.8rem}
+section{padding:clamp(4rem,9vw,6.5rem) 1.25rem}
+.w{max-width:1060px;margin:0 auto}
+.sub{color:var(--m);max-width:60ch;margin-bottom:2rem}
+:focus-visible{outline:2px solid var(--ice);outline-offset:2px}
+header{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top);background:rgba(11,15,20,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--l)}
+nav{max-width:1060px;margin:0 auto;height:60px;padding:0 1.25rem;display:flex;align-items:center;gap:.5rem}
+.logo{font:700 1.7rem var(--h);text-decoration:none;margin-right:auto;letter-spacing:.04em}
+.logo i{color:var(--em);font-style:normal}
+.lk{display:flex;gap:.2rem}
+.lk a{padding:.45rem .8rem;border-radius:8px;color:var(--m);text-decoration:none;font-weight:500;font-size:.95rem;transition:.2s}
+.lk a:hover{color:var(--t);background:var(--s2)}
+.bg{display:none}
+.btn{font:600 .95rem var(--b);padding:.7rem 1.3rem;border-radius:10px;border:1px solid var(--l);background:var(--s);color:var(--t);cursor:pointer;text-decoration:none;transition:.2s;display:inline-block}
+.btn:hover{border-color:var(--ice);transform:translateY(-1px)}
 .btn:active{transform:scale(.97)}
-.btn.primary{background:var(--mint);border-color:var(--mint);color:#0a1a16}
-.btn.primary:hover{box-shadow:0 10px 30px -8px rgba(127,216,196,.6)}
-
-/* ===== 4. LEISTUNGEN (Tabs) ===== */
-.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
-.tab{font:500 .98rem var(--sans);padding:.65rem 1.2rem;border-radius:99px;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;transition:.25s}
-.tab:hover{color:var(--text)}
-.tab[aria-selected=true]{background:var(--text);color:var(--bg);border-color:var(--text)}
-.panel{display:none;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(1.5rem,4vw,2.6rem);animation:fade .45s ease}
-.panel.show{display:grid;gap:1.6rem;grid-template-columns:1.2fr 1fr;align-items:center}
-@media(max-width:760px){.panel.show{grid-template-columns:1fr}}
-@keyframes fade{from{opacity:0;translate:0 10px}}
-.panel h3{font-size:1.9rem;margin-bottom:.7rem}
-.panel p{color:var(--muted)}
-.panel ul{list-style:none;padding:0;display:grid;gap:.6rem}
-.panel li{padding:.8rem 1rem;border-radius:12px;background:rgba(255,255,255,.04);border-left:3px solid var(--accent,var(--mint))}
-
-/* ===== 5. PROJEKTE (Filter) ===== */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem;margin-top:1.6rem}
-.card{border-radius:20px;overflow:hidden;background:var(--surface);border:1px solid var(--line);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,opacity .3s}
-.card:hover{transform:translateY(-6px);border-color:var(--c)}
-.card.hide{display:none}
-.thumb{aspect-ratio:4/3;background:radial-gradient(120% 90% at 20% 10%,var(--c),transparent 60%),linear-gradient(135deg,#1c2e37,#101a1f);display:flex;align-items:flex-end;padding:1rem}
-.thumb span{font-family:var(--serif);font-size:2.2rem;font-weight:600;color:rgba(255,255,255,.88)}
-.card div.t{padding:1.1rem 1.3rem 1.3rem}
-.card h3{font-size:1.25rem;margin-bottom:.2rem}
-.card small{color:var(--muted)}
-
-/* ===== 6. ÜBER UNS (Zahlen zählen hoch) ===== */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:2.2rem}
-.stat{border-top:1px solid var(--line);padding-top:1rem}
-.stat b{display:block;font:600 clamp(2.4rem,6vw,3.6rem)/1 var(--serif);color:var(--mint)}
-.stat span{color:var(--muted);font-size:.95rem}
-
-/* ===== 7. KONTAKT ===== */
-form{display:grid;gap:1rem;max-width:560px;margin-top:1.6rem}
-label{display:grid;gap:.4rem;font-weight:500;font-size:.95rem}
-input,textarea{font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;transition:border-color .2s,box-shadow .2s}
-input:focus,textarea:focus{outline:none;border-color:var(--mint);box-shadow:0 0 0 4px rgba(127,216,196,.15)}
-textarea{min-height:130px;resize:vertical}
-#ok{display:none;padding:1rem 1.2rem;border-radius:14px;background:rgba(127,216,196,.12);border:1px solid var(--mint);animation:fade .4s}
-footer{padding:2.5rem 1.5rem calc(2.5rem + env(safe-area-inset-bottom));text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
-
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.pr{background:var(--em);border-color:var(--em);color:#1a0b05}
+.pr:hover{border-color:#ffa184;box-shadow:0 8px 24px -8px var(--em)}
+@media(max-width:820px){.bg{display:block;font-size:1.2rem;padding:.5rem .8rem}.lk{position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);padding:.5rem 1.25rem 1rem;border-bottom:1px solid var(--l);display:none}.lk.o{display:flex}.lk a{padding:.8rem 0}}
+#start{min-height:100svh;display:flex;align-items:center;padding-top:6.5rem;background:radial-gradient(60% 50% at 85% 20%,rgba(143,211,255,.1),transparent),radial-gradient(50% 50% at 10% 90%,rgba(255,107,61,.09),transparent)}
+.hg{display:grid;grid-template-columns:1.25fr 1fr;gap:2.5rem;align-items:center}
+@media(max-width:820px){.hg{grid-template-columns:1fr}}
+h1{font-size:clamp(3.4rem,11vw,7rem);text-transform:uppercase;margin-bottom:1.2rem;animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+h1 span{color:var(--em)}
+@keyframes up{from{opacity:0;translate:0 22px}}
+.hero p{font-size:1.15rem;color:#b9c3cc;max-width:46ch;margin-bottom:1.8rem}
+.ringbox{background:var(--s);border:1px solid var(--l);border-radius:24px;padding:1.6rem;display:grid;gap:1.2rem;justify-items:center}
+.ring{--p:0;width:210px;aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--em) calc(var(--p)*1%),var(--l) 0);display:grid;place-items:center;transition:background .8s}
+.ring div{width:82%;aspect-ratio:1;border-radius:50%;background:var(--s);display:grid;place-content:center;text-align:center}
+.ring b{font:700 4.4rem/1 var(--h)}
+.ring small{color:var(--m)}
+.st{display:flex;gap:2rem;text-align:center}
+.st b{display:block;font:700 1.5rem var(--h)}.st span{color:var(--m);font-size:.85rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{padding:.4rem .85rem;border-radius:99px;border:1px solid var(--l);background:var(--s);color:var(--m);font:500 .88rem var(--b);cursor:pointer;transition:.2s}
+.chip:hover{color:var(--t);border-color:var(--ice)}
+.chat{background:var(--s);border:1px solid var(--l);border-radius:20px;overflow:hidden;max-width:760px}
+#msgs{height:min(52vh,430px);overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:.7rem}
+.m{max-width:86%;padding:.7rem 1rem;border-radius:14px;animation:up .3s both}
+.m.b{background:var(--s2);border:1px solid var(--l);border-bottom-left-radius:4px}
+.m.u{background:var(--ice);color:#06141d;align-self:flex-end;border-bottom-right-radius:4px}
+.cf{display:flex;gap:.5rem;padding:.8rem;border-top:1px solid var(--l)}
+input,select{font:inherit;color:var(--t);background:var(--bg);border:1px solid var(--l);border-radius:10px;padding:.7rem .9rem;min-width:0}
+input:focus,select:focus{outline:none;border-color:var(--ice)}
+.cf input{flex:1}
+.q{padding:0 .8rem .8rem}
+.fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.8rem;margin-bottom:1.2rem}
+label{display:grid;gap:.3rem;font-size:.9rem;color:var(--m)}
+.pl{display:grid;gap:.5rem;margin-top:1.4rem}
+.d{display:grid;grid-template-columns:3rem 1fr;gap:1rem;padding:.9rem 1.1rem;background:var(--s);border:1px solid var(--l);border-left:3px solid var(--em);border-radius:12px}
+.d.r{border-left-color:var(--l);color:var(--m)}
+.d b{font:700 1.3rem var(--h)}
+.nt{margin-top:1rem;color:var(--m);font-size:.95rem;max-width:70ch}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem}
+.c{background:var(--s);border:1px solid var(--l);border-radius:18px;padding:1.4rem;display:grid;gap:.7rem;transition:.25s}
+.c:hover{border-color:var(--ice);transform:translateY(-3px)}
+.c h3{font-size:1.7rem}.c p{color:var(--m);font-size:.95rem}
+.bar{height:8px;border-radius:9px;background:var(--l);overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ice),var(--em));transition:width .6s}
+.wk{display:flex;gap:.6rem;align-items:flex-end;height:130px;margin:1rem 0 1.6rem}
+.wk div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:.3rem;font-size:.8rem;color:var(--m)}
+.wk i{width:100%;background:linear-gradient(var(--ice),#3b8fc2);border-radius:6px 6px 0 0;min-height:3px;transition:height .6s}
+.bd{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.4rem}
+.bd span{padding:.4rem .9rem;border-radius:99px;border:1px dashed var(--l);color:#5d6b78;font-size:.88rem}
+.bd span.on{border:1px solid var(--em);color:var(--em);background:rgba(255,107,61,.08)}
+.row{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-bottom:1px solid var(--l);font-size:.95rem}
+.row button{background:none;border:0;color:var(--m);cursor:pointer;font-size:1.1rem}
+dialog{margin:auto;background:var(--s);color:var(--t);border:1px solid var(--l);border-radius:20px;padding:1.6rem;width:min(92vw,380px)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+dialog form{display:grid;gap:.9rem}
+#am{color:var(--em);font-size:.9rem;min-height:1.2em}
+#toast{position:fixed;left:50%;bottom:calc(1.5rem + env(safe-area-inset-bottom));translate:-50% 30px;background:var(--t);color:var(--bg);padding:.7rem 1.2rem;border-radius:99px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:40}
+#toast.s{opacity:1;translate:-50% 0}
+footer{padding:2rem 1.25rem;text-align:center;color:var(--m);font-size:.88rem;border-top:1px solid var(--l)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-
-<header id="top">
-  <nav aria-label="Hauptmenü">
-    <a class="logo" href="#start">Nordlicht Studio</a>
-    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">☰</button>
-    <ul class="links" id="links">
-      <li><a href="#start">Start</a></li>
-      <li><a href="#leistungen">Leistungen</a></li>
-      <li><a href="#projekte">Projekte</a></li>
-      <li><a href="#ueber-uns">Über uns</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
-  </nav>
-</header>
+<header><nav aria-label="Hauptmenü">
+<a class="logo" href="#start">FORGE<i>LINE</i></a>
+<button class="btn bg" id="bg" aria-label="Menü">☰</button>
+<div class="lk" id="lk"><a href="#coach">Coach</a><a href="#plan">Plan</a><a href="#challenges">Challenges</a><a href="#tracker">Tracker</a></div>
+<button class="btn" id="acc">Anmelden</button>
+</nav></header>
 
 <main>
-<section id="start">
-  <div class="aurora" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-  <div class="wrap hero">
-    <h1>Websites, die Eindruck hinterlassen.</h1>
-    <p>Wir gestalten Marken und digitale Produkte, die klar, schnell und auf jedem Gerät schön sind.</p>
-    <div class="btns">
-      <a class="btn primary" href="#kontakt">Projekt anfragen</a>
-      <a class="btn" href="#projekte">Arbeiten ansehen</a>
-    </div>
-  </div>
-</section>
+<section id="start"><div class="w hg">
+<div class="hero"><h1>Leistung ist <span>planbar.</span></h1>
+<p>Dein Coach, deine Pläne, deine Challenges und dein Fortschritt an einem Ort. Für Kraft, Ausdauer, Kampfsport, Ballsport und mehr.</p>
+<a class="btn pr" href="#tracker">Erste Einheit eintragen</a> <a class="btn" href="#coach">Coach fragen</a></div>
+<div class="ringbox"><div class="ring" id="ring"><div><b id="sk">0</b><small>Tage Streak</small></div></div>
+<div class="st"><div><b id="lv">1</b><span>Level</span></div><div><b id="wm">0</b><span>Min diese Woche</span></div></div>
+<small style="color:var(--m)">Ring: Wochenziel 150 Minuten</small></div>
+</div></section>
 
-<section id="leistungen">
-  <div class="wrap">
-    <h2>Was wir für dich tun</h2>
-    <p class="lead">Wähle einen Bereich, um die Details zu sehen.</p>
-    <div class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-p="p1">Marke</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="p2">Website</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="p3">Betreuung</button>
-    </div>
-    <div class="panel show" id="p1" role="tabpanel" style="--accent:var(--mint)">
-      <div><h3>Marke und Logo</h3><p>Wir entwickeln einen Auftritt, der zu dir passt: Name, Logo, Farben und Schriften in einem stimmigen Regelwerk.</p></div>
-      <ul><li>Logo und Farbwelt</li><li>Schriften und Bildsprache</li><li>Kurzes Markenhandbuch</li></ul>
-    </div>
-    <div class="panel" id="p2" role="tabpanel" style="--accent:var(--violet)">
-      <div><h3>Websites und Shops</h3><p>Schnelle, barrierearme Seiten für Handy, Tablet und Computer. Einfach zu pflegen und gut bei Google zu finden.</p></div>
-      <ul><li>Design und Programmierung</li><li>Texte und Struktur</li><li>Veröffentlichung inklusive</li></ul>
-    </div>
-    <div class="panel" id="p3" role="tabpanel" style="--accent:var(--amber)">
-      <div><h3>Laufende Betreuung</h3><p>Nach dem Start bleiben wir dran: Wir aktualisieren Inhalte, beheben Fehler und halten alles sicher.</p></div>
-      <ul><li>Monatliche Updates</li><li>Schnelle Antworten</li><li>Berichte zur Nutzung</li></ul>
-    </div>
-  </div>
-</section>
+<section id="coach" style="background:var(--s2)"><div class="w">
+<h2>Der Coach</h2>
+<p class="sub">Frag mich zu Training, Ernährung und Regeneration. Ich kenne über 18 Sportarten. Regelbasierter Coach, kein Arzt: Bei Schmerzen bitte medizinisch abklären.</p>
+<div class="chat"><div id="msgs" aria-live="polite"></div>
+<div class="q chips" id="qc"></div>
+<form class="cf" id="cf"><input id="ci" placeholder="z. B. Plan für Boxen" autocomplete="off" aria-label="Frage"><button class="btn pr">Senden</button></form></div>
+</div></section>
 
-<section id="projekte" style="background:linear-gradient(var(--bg),#0b1215)">
-  <div class="wrap">
-    <h2>Ausgewählte Projekte</h2>
-    <div class="tabs" id="filters">
-      <button class="tab" aria-selected="true" data-f="alle">Alle</button>
-      <button class="tab" aria-selected="false" data-f="marke">Marke</button>
-      <button class="tab" aria-selected="false" data-f="web">Website</button>
-    </div>
-    <div class="grid">
-      <article class="card" data-k="marke" style="--c:#7fd8c4"><div class="thumb"><span>Fjord</span></div><div class="t"><h3>Fjord Kaffee</h3><small>Marke und Verpackung</small></div></article>
-      <article class="card" data-k="web" style="--c:#a68bff"><div class="thumb"><span>Lumen</span></div><div class="t"><h3>Lumen Fotografie</h3><small>Portfolio-Website</small></div></article>
-      <article class="card" data-k="web" style="--c:#f0b27a"><div class="thumb"><span>Atlas</span></div><div class="t"><h3>Atlas Reisen</h3><small>Buchungsseite</small></div></article>
-      <article class="card" data-k="marke" style="--c:#6fb5ff"><div class="thumb"><span>Kern</span></div><div class="t"><h3>Kern Architektur</h3><small>Marke und Website</small></div></article>
-    </div>
-  </div>
-</section>
+<section id="plan"><div class="w">
+<h2>Trainingsplan</h2>
+<p class="sub">Wähle Sportart, Ziel und Level. Dein Wochenplan wird gespeichert.</p>
+<div class="fr">
+<label>Sportart<select id="ps"></select></label>
+<label>Ziel<select id="pg"><option>Muskelaufbau</option><option>Fettabbau</option><option>Ausdauer</option><option>Beweglichkeit</option><option>Wettkampf</option></select></label>
+<label>Level<select id="pv"><option>Anfänger</option><option>Fortgeschritten</option><option>Profi</option></select></label>
+<label>Tage pro Woche<select id="pd"><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6</option></select></label>
+</div>
+<button class="btn pr" id="pb">Plan erstellen</button>
+<div class="pl" id="po"></div><p class="nt" id="pn"></p>
+</div></section>
 
-<section id="ueber-uns">
-  <div class="wrap">
-    <h2>Klein, genau, verlässlich</h2>
-    <p class="lead">Wir sind ein kleines Team aus Gestaltern und Entwicklern. Du sprichst direkt mit den Menschen, die dein Projekt bauen.</p>
-    <div class="stats">
-      <div class="stat"><b data-n="120">0</b><span>Projekte abgeschlossen</span></div>
-      <div class="stat"><b data-n="9">0</b><span>Jahre Erfahrung</span></div>
-      <div class="stat"><b data-n="98">0</b><span>Prozent zufriedene Kunden</span></div>
-    </div>
-  </div>
-</section>
+<section id="challenges" style="background:var(--s2)"><div class="w">
+<h2>Challenges</h2>
+<p class="sub">Tritt bei und hake jeden Tag ab. Jeder Check-in zählt für deinen Streak.</p>
+<div class="g" id="cg"></div>
+</div></section>
 
-<section id="kontakt" style="background:linear-gradient(#0b1215,var(--bg))">
-  <div class="wrap">
-    <h2>Erzähl uns von deinem Projekt</h2>
-    <p class="lead">Wir melden uns innerhalb von zwei Werktagen.</p>
-    <form id="form">
-      <label>Name<input name="name" required autocomplete="name"></label>
-      <label>E-Mail<input type="email" name="mail" required autocomplete="email"></label>
-      <label>Nachricht<textarea name="msg" required></textarea></label>
-      <button class="btn primary" type="submit">Nachricht senden</button>
-      <div id="ok" role="status">Danke! Deine Nachricht ist angekommen.</div>
-    </form>
-  </div>
-</section>
+<section id="tracker"><div class="w">
+<h2>Tracker</h2>
+<p class="sub">Trag jede Einheit ein. Streak, Level und Abzeichen wachsen mit.</p>
+<div class="fr">
+<label>Sportart<select id="ts"></select></label>
+<label>Minuten<input id="tm" type="number" min="1" max="600" value="45"></label>
+<label>Anstrengung (1–10)<input id="tr" type="number" min="1" max="10" value="7"></label>
+<label>&nbsp;<button class="btn pr" id="tb">Eintragen</button></label>
+</div>
+<div class="wk" id="wk"></div>
+<div class="bd" id="bd"></div>
+<div id="ll"></div>
+</div></section>
 </main>
 
-<footer>© <span id="year"></span> Nordlicht Studio. Alle Rechte vorbehalten.</footer>
+<footer>© <span id="yr"></span> Forgeline. Deine Daten bleiben in diesem Browser auf diesem Gerät.</footer>
+
+<dialog id="dlg"><form id="af" method="dialog">
+<h3 style="font-size:2rem">Konto</h3>
+<input id="au" placeholder="Benutzername" autocomplete="username" aria-label="Benutzername">
+<input id="ap" type="password" placeholder="Passwort" autocomplete="current-password" aria-label="Passwort">
+<div id="am"></div>
+<div style="display:flex;gap:.5rem"><button type="button" class="btn pr" id="li">Anmelden</button><button type="button" class="btn" id="re">Registrieren</button></div>
+<button type="button" class="btn" id="cl" style="border:0;color:var(--m)">Schließen</button>
+</form></dialog>
+<div id="toast" role="status"></div>
 
 <script>
-/* ===== Menü auf dem Handy ===== */
-const burger=document.getElementById('burger'),links=document.getElementById('links');
-burger.onclick=()=>{const o=links.classList.toggle('open');burger.setAttribute('aria-expanded',o)};
-links.querySelectorAll('a').forEach(a=>a.onclick=()=>{links.classList.remove('open');burger.setAttribute('aria-expanded',false)});
-
-/* ===== Kopfzeile + aktiver Menüpunkt beim Scrollen ===== */
-const header=document.getElementById('top');
-addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>20),{passive:true});
-const navLinks=[...links.querySelectorAll('a')];
-const spy=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting)navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
-}),{rootMargin:'-45% 0px -50% 0px'});
-document.querySelectorAll('main section').forEach(s=>spy.observe(s));
-
-/* ===== Nordlicht folgt dem Finger oder der Maus ===== */
-const blobs=[...document.querySelectorAll('.blob')];
-addEventListener('pointermove',e=>{
-  const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
-  blobs.forEach((b,i)=>{const d=(i+1)*28;b.style.transform=`translate(${x*d}px,${y*d}px)`;b.style.transition='transform .9s cubic-bezier(.2,.7,.2,1)'});
-},{passive:true});
-
-/* ===== Tabs bei Leistungen ===== */
-document.querySelectorAll('.tab[data-p]').forEach(t=>t.onclick=()=>{
-  document.querySelectorAll('.tab[data-p]').forEach(x=>x.setAttribute('aria-selected',x===t));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('show',p.id===t.dataset.p));
-});
-
-/* ===== Filter bei Projekten ===== */
-document.querySelectorAll('.tab[data-f]').forEach(t=>t.onclick=()=>{
-  document.querySelectorAll('.tab[data-f]').forEach(x=>x.setAttribute('aria-selected',x===t));
-  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',t.dataset.f!=='alle'&&c.dataset.k!==t.dataset.f));
-});
-
-/* ===== Zahlen hochzählen ===== */
-const count=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;count.unobserve(e.target);
-  const el=e.target,end=+el.dataset.n,t0=performance.now();
-  (function step(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)})(t0);
-}),{threshold:.6});
-document.querySelectorAll('[data-n]').forEach(n=>count.observe(n));
-
-/* ===== Kontaktformular (Demo: sendet noch keine E-Mail) ===== */
-document.getElementById('form').addEventListener('submit',e=>{
-  e.preventDefault();e.target.reset();document.getElementById('ok').style.display='block';
-});
-document.getElementById('year').textContent=new Date().getFullYear();
+const $=s=>document.querySelector(s),K='fl_';
+const SP={
+'Krafttraining':[['Ganzkörper: Kniebeuge, Bankdrücken, Rudern','Oberkörper: Schulterdrücken, Klimmzüge, Dips','Unterkörper: Kreuzheben, Ausfallschritte, Wadenheben'],'Steigere Gewicht oder Wiederholungen in kleinen Schritten und führe jede Wiederholung kontrolliert aus.'],
+'Laufen':[['Lockerer Dauerlauf im Gespräch-Tempo','Intervalle: 6 × 2 Min schnell, 2 Min locker','Langer Lauf, ruhig und gleichmäßig'],'80 % der Läufe locker, der Rest hart. Steigere den Umfang pro Woche um höchstens 10 %.'],
+'Radfahren':[['Grundlagenfahrt 60–90 Min, gleichmäßig','Intervalle: 5 × 4 Min am Schwellenbereich','Bergintervalle oder Kraftausdauer bei niedriger Trittfrequenz'],'Achte auf Sitzhöhe und eine runde Trittfrequenz um 85–95.'],
+'Schwimmen':[['Technik: Beinschlag, Armzug, Atmung','Serien: 8 × 100 m mit 20 Sek Pause','Ausdauer: 20–30 Min durchgehend'],'Gute Wasserlage zuerst, Tempo danach. Atme gleichmäßig aus.'],
+'Boxen':[['Technik: Schlagkombinationen und Fußarbeit am Sack','Schattenboxen, Sprungseil, Rundentraining 6 × 3 Min','Partnerarbeit, Pratzen und Verteidigung'],'Kraft kommt aus Hüfte und Beinen. Halte die Deckung oben, auch wenn du müde bist.'],
+'MMA':[['Stand: Schlagen, Treten, Clinch','Boden: Takedowns, Kontrolle, Submissions','Sparring leicht plus Konditionsrunden'],'Technik vor Tempo. Plane Erholung ein, Kampfsport belastet Gelenke stark.'],
+'Yoga':[['Flow: Sonnengruß, Stand- und Balancehaltungen','Hüft- und Schulteröffner, lange Haltezeiten','Kraft-Yoga: Planks, Stuhl, Krieger-Folgen'],'Atme ruhig durch die Nase. Geh nie in Schmerz, nur in Dehnung.'],
+'Pilates':[['Core: Hundred, Roll-up, Single Leg Stretch','Beckenboden, Rücken und Glutes: Bridge, Swimming','Ganzkörperfluss auf der Matte'],'Qualität statt Menge. Spanne die Körpermitte bewusst an.'],
+'CrossFit':[['Skill: Olympisches Heben und Turnen','WOD: AMRAP 12 Min mit Kniebeuge, Burpees, Rudern','Kraftblock: Kreuzheben oder Kniebeuge schwer'],'Skaliere Gewicht und Bewegung, bevor die Technik leidet.'],
+'Calisthenics':[['Push: Liegestütze, Dips, Pike Push-ups','Pull: Klimmzüge, Australian Rows, Hanging Leg Raises','Beine und Core: Pistol-Progression, Plank, L-Sit'],'Wähle Varianten, die du sauber 6–12 Mal schaffst, und werde dann schwerer.'],
+'Klettern':[['Bouldern: Technik, Fußarbeit, Route lesen','Kraftausdauer: Vier mal vier Routen','Antagonisten: Liegestütze, Schulterstabilität, Fingerpflege'],'Fingersehnen brauchen Zeit. Steigere Hangboard-Belastung nur langsam.'],
+'Fußball':[['Technik: Passen, Ballkontrolle, Torschuss','Sprint, Agility und Richtungswechsel','Spielform und Ausdauer 4 × 4 Min'],'Kräftige Beine und Rumpf schützen vor Verletzungen. Wärme dich immer auf.'],
+'Basketball':[['Wurf, Dribbling und Fußarbeit','Sprungkraft: Box Jumps, Kniebeuge, Lauf-ABC','Spielformen und Konditionsserien'],'Gute Landetechnik schützt Knie und Knöchel. Trainiere beide Hände.'],
+'Tennis':[['Schlagtechnik und Aufschlag','Beinarbeit, Reaktion, kurze Sprints','Matchspiel plus Schulter- und Rumpfkraft'],'Starke Schulter und Rumpf verhindern Überlastung. Dehne Unterarm und Schulter.'],
+'Rudern':[['Technik: Beine, dann Rücken, dann Arme','Intervalle 6 × 500 m','Steady State 40–60 Min'],'Die Kraft kommt zu 60 % aus den Beinen. Halte den Rücken neutral.'],
+'HIIT':[['Tabata: 8 × 20 Sek Vollgas, 10 Sek Pause','Zirkel: Burpees, Mountain Climbers, Jumping Squats','Sprints und Kettlebell-Swings'],'Hohe Intensität braucht Erholung. Nicht mehr als 2–3 harte Tage pro Woche.'],
+'Wandern':[['Zügige Runde 60–90 Min mit leichtem Anstieg','Bergauf-Intervalle und Rucksacktraining','Langer Tagesmarsch'],'Gute Schuhe und Stöcke entlasten die Gelenke. Trink regelmäßig.'],
+'Tanzen':[['Grundschritte und Rhythmus','Choreografie und Ausdauerblöcke','Freestyle plus Beweglichkeit'],'Viel Spaß, viel Kalorienverbrauch. Dehne danach Waden und Hüfte.']};
+const names=Object.keys(SP),LV={'Anfänger':'30–40 Min, locker','Fortgeschritten':'45–60 Min, fordernd','Profi':'60–90 Min, hart'};
+const GN={'Muskelaufbau':'Iss leicht über Bedarf und nimm 1,6–2,2 g Protein pro kg Körpergewicht.','Fettabbau':'Ein moderates Defizit von 300–500 kcal, dazu täglich Bewegung und Schlaf.','Ausdauer':'Viel lockere Einheiten, dazu ein harter Tag pro Woche.','Beweglichkeit':'Ergänze täglich 10 Minuten Mobility.','Wettkampf':'Plane eine entlastete Woche vor dem Wettkampf ein.'};
+const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'],POS={2:[0,3],3:[0,2,4],4:[0,1,3,4],5:[0,1,2,4,5],6:[0,1,2,3,4,5]};
+const CH=[['plank','30 Tage Plank','Jeden Tag Plank halten und 10 Sekunden steigern.',30],['push','100 Liegestütze','100 Wiederholungen am Tag, in beliebig vielen Sätzen.',14],['walk','10.000 Schritte','Jeden Tag 10.000 Schritte, am besten draußen.',14],['mob','Mobility-Woche','Jeden Tag 10 Minuten Beweglichkeit.',7],['run','Run-Streak','Jeden Tag mindestens 20 Minuten laufen.',21],['sleep','Schlaf-Reset','7–9 Stunden Schlaf mit festen Zeiten.',14]];
+const ds=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'),td=()=>ds(new Date());
+let cur=localStorage.getItem(K+'cur')||'',D;
+const key=()=>K+'d_'+(cur||'gast');
+function load(){try{D=JSON.parse(localStorage.getItem(key()))}catch(e){}D=D||{log:[],ch:{},plan:null}}
+function save(){try{localStorage.setItem(key(),JSON.stringify(D))}catch(e){}}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('s');setTimeout(()=>e.classList.remove('s'),2200)}
+function dset(){const s=new Set(D.log.map(x=>x.d));Object.values(D.ch).forEach(c=>c.days.forEach(x=>s.add(x)));return s}
+function streak(){const s=dset(),d=new Date();if(!s.has(ds(d)))d.setDate(d.getDate()-1);let n=0;while(s.has(ds(d))){n++;d.setDate(d.getDate()-1)}return n}
+function minsOn(day){return D.log.filter(x=>x.d===day).reduce((a,x)=>a+x.m,0)}
+function week(){let a=0;for(let i=0;i<7;i++){const d=new Date();d.setDate(d.getDate()-i);a+=minsOn(ds(d))}return a}
+function total(){return D.log.reduce((a,x)=>a+x.m,0)}
+function xp(){return total()+20*Object.values(D.ch).reduce((a,c)=>a+c.days.length,0)}
+function render(){
+const st=streak(),w=week();
+$('#sk').textContent=st;$('#wm').textContent=w;$('#lv').textContent=Math.floor(Math.sqrt(xp()/50))+1;
+$('#ring').style.setProperty('--p',Math.min(100,w/150*100));
+$('#acc').textContent=cur?cur+' · Abmelden':'Anmelden';
+$('#cg').innerHTML=CH.map(([id,t,p,n])=>{const c=D.ch[id],k=c?c.days.length:0,done=k>=n,did=c&&c.days.includes(td());
+return `<div class="c"><h3>${t}</h3><p>${p}</p><div class="bar"><i style="width:${k/n*100}%"></i></div><small style="color:var(--m)">${c?k+' von '+n+' Tagen'+(done?' · geschafft':''):n+' Tage'}</small>${!c?`<button class="btn pr" data-j="${id}">Beitreten</button>`:done?'<button class="btn" disabled>Abgeschlossen</button>':did?'<button class="btn" disabled>Heute erledigt</button>':`<button class="btn pr" data-k="${id}">Heute abhaken</button>`}</div>`}).join('');
+let h='';for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const m=minsOn(ds(d));h+=`<div><i style="height:${Math.min(100,m/90*100)}%"></i>${DAYS[(d.getDay()+6)%7]}</div>`}
+$('#wk').innerHTML=h;
+const B=[['Erster Schritt',D.log.length>=1],['7er Streak',st>=7],['10 Einheiten',D.log.length>=10],['500 Minuten',total()>=500],['Challenge-Starter',Object.keys(D.ch).length>0],['Finisher',CH.some(([id,,,n])=>D.ch[id]&&D.ch[id].days.length>=n)]];
+$('#bd').innerHTML=B.map(([t,o])=>`<span class="${o?'on':''}">${t}</span>`).join('');
+$('#ll').innerHTML=D.log.map((x,i)=>[x,i]).slice(-8).reverse().map(([x,i])=>`<div class="row"><span>${x.d} · ${x.s}</span><span>${x.m} Min · RPE ${x.r} <button data-x="${i}" aria-label="Löschen">×</button></span></div>`).join('')||'<p class="nt">Noch keine Einheit eingetragen.</p>';
+if(D.plan)showPlan(D.plan);else{$('#po').innerHTML='';$('#pn').textContent=''}}
+function gen(s,g,l,n){const ses=SP[s][0],pos=POS[n];let k=0;return{s,g,l,n,days:DAYS.map((d,i)=>pos.includes(i)?ses[k++%3]+' · '+LV[l]:null)}}
+function showPlan(p){$('#po').innerHTML=p.days.map((t,i)=>`<div class="d ${t?'':'r'}"><b>${DAYS[i]}</b><span>${t||'Ruhetag: Spaziergang und Dehnen'}</span></div>`).join('');$('#pn').textContent=SP[p.s][1]+' '+GN[p.g]}
+$('#ps').innerHTML=$('#ts').innerHTML=names.map(n=>`<option>${n}</option>`).join('');
+$('#pb').onclick=()=>{D.plan=gen($('#ps').value,$('#pg').value,$('#pv').value,+$('#pd').value);save();showPlan(D.plan);toast('Plan gespeichert')};
+$('#tb').onclick=()=>{const m=+$('#tm').value,r=+$('#tr').value;if(!(m>0)||!(r>=1&&r<=10)){toast('Bitte Minuten und 1–10 prüfen');return}D.log.push({d:td(),s:$('#ts').value,m,r});save();render();toast('Einheit eingetragen')};
+document.addEventListener('click',e=>{const t=e.target;
+if(t.dataset.j){D.ch[t.dataset.j]={days:[]};save();render();toast('Challenge gestartet')}
+if(t.dataset.k){const c=D.ch[t.dataset.k];if(!c.days.includes(td()))c.days.push(td());save();render();toast('Check-in gespeichert')}
+if(t.dataset.x){D.log.splice(+t.dataset.x,1);save();render()}});
+const KB=[[/protein|eiweiß/,'Als Richtwert gelten 1,6–2,2 g Protein pro kg Körpergewicht am Tag, verteilt auf 3–5 Mahlzeiten.'],
+[/abnehm|fettabbau|diät|kalori/,'Plane ein moderates Defizit von 300–500 kcal, trainiere weiter Kraft, geh täglich 8.000–10.000 Schritte und schlaf genug.'],
+[/muskel|aufbau|masse/,'Trainiere jede Muskelgruppe 2× pro Woche mit 10–20 harten Sätzen, steigere die Last langsam und iss leicht über Bedarf.'],
+[/schlaf/,'Ziele auf 7–9 Stunden mit festen Zeiten. Schlafmangel bremst Kraft, Ausdauer und Erholung spürbar.'],
+[/regener|muskelkater|pause|erholung/,'Muskelkater ist normal. Leichte Bewegung, Schlaf und Eiweiß helfen. Plane mindestens 1–2 Ruhetage pro Woche.'],
+[/aufwärm/,'5–10 Minuten: leichtes Cardio, dann dynamische Mobility und 1–2 leichte Sätze deiner ersten Übung.'],
+[/dehn|beweglich|mobil/,'Dynamisch vor dem Training, statisch (30–60 Sek) danach. Zehn Minuten täglich bringen mehr als eine lange Einheit.'],
+[/verletz|schmerz|knie|rücken|schulter|gelenk/,'Bei Schmerzen reduziere die Belastung und lass es abklären, besonders bei Schwellung, Taubheit oder Schmerz in Ruhe. Das kann ich nicht beurteilen.'],
+[/motiv|lust|faul|dranbleib/,'Mach es kleiner: 10 Minuten zählen. Feste Zeit, ein Streak und eine Challenge helfen, dranzubleiben.'],
+[/anfänger|beginn|einstieg|start/,'Starte mit 3 Einheiten pro Woche à 30–40 Minuten. Lerne zuerst Technik und steigere erst nach 2–3 Wochen.'],
+[/trink|wasser|hydrat/,'Etwa 30–40 ml pro kg Körpergewicht am Tag, bei langen oder heißen Einheiten mehr. Dein Urin sollte hellgelb sein.'],
+[/streak/,'Dein Streak zählt jeden Tag mit einer Einheit oder einem Challenge-Check-in. Schau im Tracker nach.'],
+[/challenge/,'Im Bereich Challenges findest du sechs Herausforderungen. Tritt bei und hake jeden Tag ab.'],
+[/hallo|hi |hey|moin|servus/,'Hallo! Frag mich nach einer Sportart, Ernährung oder sag „Plan für Boxen“.']];
+function msg(t,c,h){const e=document.createElement('div');e.className='m '+c;h?e.innerHTML=t:e.textContent=t;$('#msgs').appendChild(e);$('#msgs').scrollTop=1e5}
+function answer(q){const m=q.toLowerCase()+' ',sp=names.find(n=>m.includes(n.toLowerCase().slice(0,4)));
+if(sp){const [s,tip]=SP[sp];if(/plan/.test(m)){D.plan=gen(sp,'Ausdauer','Anfänger',3);save();showPlan(D.plan);return `<b>${sp}: 3-Tage-Plan</b><br>`+D.plan.days.map((t,i)=>t?DAYS[i]+': '+t:'').filter(Boolean).join('<br>')+'<br>Der Plan steht auch im Bereich Plan.'}
+return `<b>${sp}</b><br>Typische Einheiten: ${s.join('; ')}.<br>Tipp: ${tip}<br>Schreib „Plan für ${sp}“ für einen Wochenplan.`}
+const k=KB.find(([r])=>r.test(m));if(k)return k[1];
+if(/plan/.test(m))return 'Nenne mir die Sportart, zum Beispiel „Plan für Laufen“, oder nutze den Plan-Generator.';
+return 'Dazu habe ich keine feste Antwort. Frag nach einer Sportart (z. B. Boxen, Yoga), nach Ernährung, Regeneration oder sag „Plan für Laufen“.'}
+function ask(q){if(!q.trim())return;msg(q,'u');setTimeout(()=>msg(answer(q),'b',1),450)}
+$('#cf').onsubmit=e=>{e.preventDefault();ask($('#ci').value);$('#ci').value=''};
+$('#qc').innerHTML=['Plan für Boxen','Wie viel Protein?','Wie starte ich als Anfänger?','Yoga','Muskelkater','Klettern'].map(t=>`<button class="chip">${t}</button>`).join('');
+$('#qc').onclick=e=>{if(e.target.matches('.chip'))ask(e.target.textContent)};
+async function H(s){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){return btoa(s)}}
+async function auth(reg){const n=$('#au').value.trim().toLowerCase(),p=$('#ap').value;
+if(n.length<3||p.length<4){$('#am').textContent='Name mind. 3 und Passwort mind. 4 Zeichen.';return}
+let U={};try{U=JSON.parse(localStorage.getItem(K+'u'))||{}}catch(e){}const h=await H(p);
+if(reg){if(U[n]){$('#am').textContent='Name schon vergeben.';return}U[n]=h;localStorage.setItem(K+'u',JSON.stringify(U))}
+else if(U[n]!==h){$('#am').textContent='Name oder Passwort falsch.';return}
+cur=n;localStorage.setItem(K+'cur',n);load();render();$('#dlg').close();$('#ap').value='';toast('Willkommen, '+n)}
+$('#li').onclick=()=>auth(0);$('#re').onclick=()=>auth(1);$('#cl').onclick=()=>$('#dlg').close();
+$('#acc').onclick=()=>{if(cur){cur='';localStorage.removeItem(K+'cur');load();render();toast('Abgemeldet')}else{$('#am').textContent='';$('#dlg').showModal()}};
+$('#bg').onclick=()=>$('#lk').classList.toggle('o');$('#lk').onclick=()=>$('#lk').classList.remove('o');
+$('#yr').textContent=new Date().getFullYear();
+load();render();
+msg('Willkommen bei Forgeline. Ich kenne '+names.length+' Sportarten. Frag mich etwas oder tippe auf einen Vorschlag.','b');
 </script>
 </body>
 </html>
